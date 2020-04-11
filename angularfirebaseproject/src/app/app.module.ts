@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SigninComponent } from './signin/signin.component';
-import { AuthService } from './auth.service';
+//import { AuthService } from './auth.service';
 
 import { AngularFireAuthModule } from "@angular/fire/auth";
 
@@ -17,6 +17,12 @@ import { HomeComponent } from './home/home.component';
 
 import {  RouterModule } from '@angular/router';
 import { routes } from 'src/routing.module';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
+import { AuthService } from './shared/services/auth.service';
 
 
 
@@ -25,7 +31,12 @@ import { routes } from 'src/routing.module';
   declarations: [
     AppComponent,
     SigninComponent,
-    HomeComponent
+    HomeComponent,
+    DashboardComponent,
+    SignInComponent,
+    SignUpComponent,
+    ForgotPasswordComponent,
+    VerifyEmailComponent
   ],
   imports: [
     BrowserModule,
