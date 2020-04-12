@@ -4,12 +4,16 @@ import { auth } from 'firebase/app';
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from "@angular/router";
+import { Details } from 'src/app/models/constant';
+import { BehaviorSubject } from 'rxjs';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  private dataSource = new BehaviorSubject(new Number());
+ 
   userData: any; // Save logged in user data
 
   constructor(
@@ -17,7 +21,9 @@ export class AuthService {
     public afAuth: AngularFireAuth, // Inject Firebase auth service
     public router: Router,  
     public ngZone: NgZone // NgZone service to remove outside scope warning
+    
   ) {    
+
     /* Saving user data in localstorage when 
     logged in and setting up null when logged out */
     this.afAuth.authState.subscribe(user => {
@@ -31,6 +37,9 @@ export class AuthService {
       }
     })
   }
+
+
+  data = this.dataSource.asObservable();
 
   // Sign in with email/password
   SignIn(email, password) {
@@ -143,4 +152,14 @@ export class AuthService {
         console.log(error)
     })
   }
+
+  //getDetails
+  getMessage() {
+    console.log("service cll")
+    return this.afs.collection('messages').snapshotChanges();
+   }
+
+createDetail(detail: Details){
+  return this.afs.collection('policies').add(detail);
+}
 }

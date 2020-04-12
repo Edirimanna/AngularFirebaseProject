@@ -23,6 +23,9 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 import { AuthService } from './shared/services/auth.service';
+import { ChatroomComponent } from './chatroom/chatroom.component';
+import { UserprofileComponent } from './userprofile/userprofile.component';
+import { ChatroomService } from './shared/services/chatroom.service';
 
 
 
@@ -36,7 +39,9 @@ import { AuthService } from './shared/services/auth.service';
     SignInComponent,
     SignUpComponent,
     ForgotPasswordComponent,
-    VerifyEmailComponent
+    VerifyEmailComponent,
+    ChatroomComponent,
+    UserprofileComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +54,7 @@ import { AuthService } from './shared/services/auth.service';
   AngularFirestoreModule
     
   ],
-  providers: [AuthService],
+  providers: [AuthService, ChatroomService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

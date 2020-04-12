@@ -6,6 +6,8 @@ import { SignUpComponent } from './app/components/sign-up/sign-up.component';
 import { DashboardComponent } from './app/components/dashboard/dashboard.component';
 import { ForgotPasswordComponent } from './app/components/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './app/components/verify-email/verify-email.component';
+import { ChatroomComponent } from './app/chatroom/chatroom.component';
+import { UserprofileComponent } from './app/userprofile/userprofile.component';
 
 export const routes: Routes = [
    // { path: '', redirectTo: '/sign-in', pathMatch: 'full' },
@@ -14,7 +16,27 @@ export const routes: Routes = [
    { path: '', redirectTo: '/sign-in', pathMatch: 'full' },
   { path: 'sign-in', component: SignInComponent },
   { path: 'register-user', component: SignUpComponent },
-  { path: 'dashboard', component: DashboardComponent },
+  { path: 'dashboard',
+    component: DashboardComponent ,
+
+    children :[
+       {
+          path: '',
+          redirectTo: 'chat',
+          pathMatch: 'full'
+       },
+       {
+          path: 'chat',
+          component: ChatroomComponent
+       },
+       {
+         path: 'user-profile',
+         component: UserprofileComponent
+      },
+
+    ]
+   },
+
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'verify-email-address', component: VerifyEmailComponent }
 
